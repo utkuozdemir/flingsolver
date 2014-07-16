@@ -26,20 +26,27 @@ public class Solver {
 			newSize = boards.size();
 		}
 
+		Set<Board> finishedBoards = new HashSet<>();
 		for (Board current : boards) {
 			if (current.isFinished()) {
-				List<String> pattern = new ArrayList<>();
-				Board b = current;
-				while (b != null) {
-					pattern.add(b.toString());
-					b = b.getParent();
-				}
-				Collections.reverse(pattern);
-				for (String p : pattern) {
-					System.out.println(p);
-					System.out.println("-----------");
-				}
-				break;
+				finishedBoards.add(current);
+			}
+		}
+
+		if (finishedBoards.isEmpty()) System.out.println("NO SOLUTIONS FOUND!!");
+		else {
+			System.out.println("SOLUTION COUNT: " + finishedBoards.size());
+
+			List<String> pattern = new ArrayList<>();
+			Board b = finishedBoards.iterator().next();
+			while (b != null) {
+				pattern.add(b.toString());
+				b = b.getParent();
+			}
+			Collections.reverse(pattern);
+			for (String p : pattern) {
+				System.out.println(p);
+				System.out.println("-----------");
 			}
 		}
 	}
