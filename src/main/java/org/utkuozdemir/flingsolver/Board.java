@@ -18,10 +18,16 @@ public class Board {
 	private Set<Board> possibleNextBoards;
 
 	private Board parent;
+	private Move sourceMove;
 
-	public Board(int[][] board, Board parent) {
-		this.parent = parent;
+	public Board(int[][] board) {
+		this(board, null, null);
+	}
+
+	public Board(int[][] board, Board parent, Move sourceMove) {
 		this.board = board;
+		this.parent = parent;
+		this.sourceMove = sourceMove;
 		this.rows = board.length;
 		this.columns = board[0].length;
 
@@ -173,7 +179,7 @@ public class Board {
 				}
 				break;
 		}
-		return new Board(newBoard, this);
+		return new Board(newBoard, this, move);
 
 	}
 
@@ -196,6 +202,10 @@ public class Board {
 
 	public Board getParent() {
 		return parent;
+	}
+
+	public Move getSourceMove() {
+		return sourceMove;
 	}
 
 	@Override

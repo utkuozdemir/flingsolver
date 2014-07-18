@@ -35,18 +35,31 @@ public class Solver {
 
 		if (finishedBoards.isEmpty()) System.out.println("NO SOLUTIONS FOUND!!");
 		else {
+//			System.out.println("SOLUTION COUNT: " + finishedBoards.size());
+//
+//			List<String> pattern = new ArrayList<>();
+//			Board b = finishedBoards.iterator().next();
+//			while (b != null) {
+//				pattern.add(b.toString());
+//				b = b.getParent();
+//			}
+//			Collections.reverse(pattern);
+//			for (String p : pattern) {
+//				System.out.println(p);
+//				System.out.println("-----------");
+//			}
 			System.out.println("SOLUTION COUNT: " + finishedBoards.size());
 
 			List<String> pattern = new ArrayList<>();
 			Board b = finishedBoards.iterator().next();
-			while (b != null) {
-				pattern.add(b.toString());
+			while (b != null && b.getSourceMove() != null) {
+				pattern.add(b.getSourceMove().toString());
 				b = b.getParent();
 			}
 			Collections.reverse(pattern);
 			for (String p : pattern) {
 				System.out.println(p);
-				System.out.println("-----------");
+//				System.out.println("-----------");
 			}
 		}
 	}

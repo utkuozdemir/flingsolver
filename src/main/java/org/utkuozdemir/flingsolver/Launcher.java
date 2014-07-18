@@ -55,7 +55,7 @@ public class Launcher {
 		};
 
 		long start = System.currentTimeMillis();
-		Board board = new Board(initialBoard, null);
+		Board board = new Board(initialBoard);
 		new Solver(board).solve();
 		long end = System.currentTimeMillis();
 
